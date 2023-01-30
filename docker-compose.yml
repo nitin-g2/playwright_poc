@@ -1,0 +1,15 @@
+version: "3.5"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # command: >
+    #   bash -c "poetry install &&
+    #   ./entrypoint.sh"
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    privileged: true
+    volumes:
+      - ./:/home/deployer
+      - $HOME/.aws:/home/deployer/.aws
